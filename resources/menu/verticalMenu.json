@@ -70,6 +70,12 @@
       "slug": "categories"
     },
     {
+      "url": "products",
+      "icon": "menu-icon tf-icons mdi mdi-food-outline",
+      "name": "Products",
+      "slug": "products"
+    },
+    {
       "name": "Layouts",
       "icon": "menu-icon tf-icons mdi mdi-window-maximize",
       "slug": "layouts",

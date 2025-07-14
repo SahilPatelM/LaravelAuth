@@ -45,6 +45,7 @@ use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 use App\Http\Controllers\users\UsersController;
 use App\Http\Controllers\product\CategoriesController;
+use App\Http\Controllers\product\ProductsController;
 
 // Redirect /, /admin, /admin/login to /auth/login-basic
 Route::redirect('/', '/auth/login');
@@ -134,5 +135,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/{id}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
     Route::post('/{id}', [CategoriesController::class, 'update'])->name('categories.update');
     Route::delete('/destroy', [CategoriesController::class, 'destroy'])->name('categories.destroy');
+  });
+
+  Route::group(['prefix' => 'products'], function () {
+    Route::get('/', [ProductsController::class, 'index'])->name('products');
+    Route::get('/list', [ProductsController::class, 'list'])->name('products.list');
+    Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
+    Route::get('/{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+    Route::post('/{id}', [ProductsController::class, 'update'])->name('products.update');
+    Route::delete('product-images/{id}', [ProductsController::class, 'removeImage'])->name('products.remove.image');
+    Route::delete('/destroy', [ProductsController::class, 'destroy'])->name('products.destroy');
   });
 });
